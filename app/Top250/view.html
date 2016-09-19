@@ -1,0 +1,40 @@
+<h1 class="page-header">{{title}}</h1>
+
+<h5 ng-if="errmessages">{{errmessages}}</h5>
+
+<div class="list-group">
+  <a href="{{item.alt}}" target="_blank" ng-repeat="item in subjects" class="list-group-item" ng-repeat="item in subjects">
+  <span class="badge">{{item.rating.average}}</span>
+  <div class="media">
+   	  <div class="media-left media-middle">
+   	  	 <img  ng-src="{{item.images.small}}" alt="{{item.title}}" class="media-object" height="128px">
+   	  </div>
+	  <div class="media-body">
+	    <h2 class="media-heading"><strong>{{item.title}}</strong></h2>
+	    <p>导演：<span ng-repeat="d in item.directors">{{d.name}}<span ng-if="!$last">、</span></span></p>
+	    <p>类型：<span>{{item.genres.join("、")}}</span></p>
+	    <p>演员：<span ng-repeat="actor in item.casts">{{actor.name}}<span ng-if="!$last">、</span></span></p>
+	  </div>
+	</div>
+  </a>
+  
+</div>
+
+
+<div ng-show="!loading">
+	<p >共:{{totalC}}条记录,第{{page}}/{{totalP}}页</p>
+	<nav>
+	  <ul class="pager">
+	    <li ng-class="{disabled:page<=1}"><a ng-click="goPage(page - 1)">Previous >></a></li>
+	    <li ng-class="{disabled:page>=totalP}"><a ng-click="goPage(page + 1)">Next >></a></li>
+	  </ul>
+	</nav>
+</div>
+
+<!--loading-->
+<div class="wraploading" ng-show="loading">
+	<div class="loading">
+    <span></span>
+	</div>
+</div>
+

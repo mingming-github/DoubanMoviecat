@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="moviecat">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MOVIECAT</title>
+		<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+		<link rel="stylesheet" href="app.css">
+	</head>
+
+	<body>
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				            <span class="sr-only">Toggle navigation</span>
+				            <span class="icon-bar"></span>
+				            <span class="icon-bar"></span>
+				            <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Douban Movie</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li>
+							<a href="#">Settings</a>
+						</li>
+						<li>
+							<a href="#">Profile</a>
+						</li>
+						<li>
+							<a href="#">Help</a>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-right">
+						<input type="text" class="form-control" placeholder="Search...">
+					</form>
+				</div>
+			</div>
+		</nav>
+		<div class="container-fluid">
+	      <div class="row">
+			<div class="col-sm-3 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li class="active">
+						<a href="#/in_theaters/p=1">In_theaters</a>
+					</li>
+					<li>
+						<a href="#/coming_soon/p=1">coming_soon</a>
+					</li>
+					<li>
+						<a href="#/top250/p=1">Top250</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-view>
+				
+			</div>
+		</div>
+   </div>
+
+		<!--<div>Angular boilerplate app: v<span app-version></span></div>-->
+
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="app.js"></script>
+		<script src="components/jsonpSer.js"></script>
+		<script src="In_theaters/Ctrl.js"></script>
+		<script src="Coming_soon/Ctrl.js"></script>
+		<script src="Top250/Ctrl.js"></script>
+	</body>
+
+</html>
