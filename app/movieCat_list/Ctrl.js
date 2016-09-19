@@ -3,17 +3,17 @@
 	
 	'use strict';
 
-	var mod=angular.module('moviecat.in_theaters', ['ngRoute','jsonpSmod']);
+	var mod=angular.module('moviecatMod', ['ngRoute','jsonpSmod']);
 	
 	
 	mod.config(['$routeProvider', function($routeProvider) {
-	  $routeProvider.when('/in_theaters/p=:page', {
-	    templateUrl: 'In_theaters/view.html',
-	    controller: 'In_theatersCtrl'
+	  $routeProvider.when('/:catgory/p=:page', {
+	    templateUrl: 'movieCat_list/view.html',
+	    controller: 'moviecatModCtrl'
 	  });
 	}]);
 	
-	mod.controller('In_theatersCtrl',['$scope','$http','$routeParams','$route','jsonpSer',function($scope,$http,$routeParams,$route,jsonpSer) {
+	mod.controller('moviecatModCtrl',['$scope','$http','$routeParams','$route','jsonpSer',function($scope,$http,$routeParams,$route,jsonpSer) {
 		/*
 		$scope.subjects=[];
 		$scope.errmessages='';
@@ -40,7 +40,8 @@
 		$scope.totalC=0;                       //总条数 
 		$scope.loading=true;				   //是否加载
 		
-		jsonpSer.jsonp('http://api.douban.com/v2/movie/in_theaters',{'start':start,'count':count},function(data){
+		var catgory=$routeParams.catgory;
+		jsonpSer.jsonp('http://api.douban.com/v2/movie/'+catgory,{'start':start,'count':count},function(data){
 			//console.log(data);
 			
 			$scope.totalC=data.total;
@@ -48,13 +49,14 @@
 			$scope.title=data.title;
 			$scope.subjects=data.subjects;
 			$scope.loading=false;
+			
 			$scope.$apply();                   //让所有的值重新同步  解决获取不到数据
 			
 			//上下页事件暴露
 			$scope.goPage=function(page){
 				
 				if ( page>=1 && page<=$scope.totalP ){
-					$route.updateParams({page:page});   //第一个page是/:page    第二个是个参数pg
+					$route.updateParams({page:page});   //更新地址里的数据      第一个page是 /:page    第二个是个参数page
 				}
 				
 			}

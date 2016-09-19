@@ -46,14 +46,14 @@
 		<div class="container-fluid">
 	      <div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
-					<li class="active">
+				<ul class="nav nav-sidebar" ng-controller="navCtrl">
+					<li ng-class="{active:type=='in_theaters'}">
 						<a href="#/in_theaters/p=1">In_theaters</a>
 					</li>
-					<li>
+					<li ng-class="{active:type=='coming_soon'}">
 						<a href="#/coming_soon/p=1">coming_soon</a>
 					</li>
-					<li>
+					<li ng-class="{active:type=='top250'}">
 						<a href="#/top250/p=1">Top250</a>
 					</li>
 				</ul>
@@ -70,9 +70,10 @@
 		<script src="bower_components/angular-route/angular-route.js"></script>
 		<script src="app.js"></script>
 		<script src="components/jsonpSer.js"></script>
-		<script src="In_theaters/Ctrl.js"></script>
+		<script src="movieCat_list/Ctrl.js"></script>
+		<!--<script src="In_theaters/Ctrl.js"></script>
 		<script src="Coming_soon/Ctrl.js"></script>
-		<script src="Top250/Ctrl.js"></script>
+		<script src="Top250/Ctrl.js"></script>-->
 	</body>
 
 </html>
