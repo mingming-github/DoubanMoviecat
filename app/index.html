@@ -6,6 +6,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>MOVIECAT</title>
+		<script src="bower_components/script.js/dist/script.js"></script>
+		<script src="bower_components/angular-loader/angular-loader.min.js"></script>
 		<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 		<link rel="stylesheet" href="app.css">
 	</head>
@@ -22,23 +24,14 @@
 				</button>
 				<a class="navbar-brand" href="#">Douban Movie</a>
 				</div>
-				<div id="navbar" class="navbar-collapse collapse">
+				<div id="navbar" class="navbar-collapse collapse" ng-controller="searchCtrl">
 					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li>
-							<a href="#">Settings</a>
-						</li>
-						<li>
-							<a href="#">Profile</a>
-						</li>
-						<li>
-							<a href="#">Help</a>
+						<li ng-click="searching()">
+							<a>search</a>
 						</li>
 					</ul>
-					<form class="navbar-form navbar-right">
-						<input type="text" class="form-control" placeholder="Search...">
+					<form class="navbar-form navbar-right"  ng-submit="searching()">
+						<input type="text" class="form-control" placeholder="Search..." ng-model="input">
 					</form>
 				</div>
 			</div>
@@ -66,14 +59,25 @@
 
 		<!--<div>Angular boilerplate app: v<span app-version></span></div>-->
 
-		<script src="bower_components/angular/angular.js"></script>
+		<!--<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-route/angular-route.js"></script>
-		<script src="app.js"></script>
 		<script src="components/jsonpSer.js"></script>
 		<script src="movieCat_list/Ctrl.js"></script>
-		<!--<script src="In_theaters/Ctrl.js"></script>
-		<script src="Coming_soon/Ctrl.js"></script>
-		<script src="Top250/Ctrl.js"></script>-->
+		<script src="app.js"></script>-->
+		
+		
+		<script type="text/javascript">
+			//下面的顺序可以写乱，loder.js自动控制顺序
+			$script(['bower_components/angular/angular.js',
+					'bower_components/angular-route/angular-route.js',
+					'components/jsonpSer.js',
+					'movieCat_detail/Ctrl.js',
+					'movieCat_list/Ctrl.js',
+					'app.js'],function(){
+						
+						
+			})
+		</script>
 	</body>
 
 </html>

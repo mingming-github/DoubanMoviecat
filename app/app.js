@@ -6,6 +6,7 @@
 	// Declare app level module which depends on views, and components
 	var mod=angular.module('moviecat', [
 			  'ngRoute',
+			  'detailMod',
 			  'moviecatMod'
 			]);
 			
@@ -13,7 +14,7 @@
 		  $routeProvider.otherwise({redirectTo: '/in_theaters/p=1'});
 	}]);
 	
-	//导航颜色
+	//监听导航颜色
 	mod.controller('navCtrl',['$scope','$location',function($scope,$location){
 		
 		//$scope.path=$location.path();
@@ -29,8 +30,18 @@
 			};
 		});
 		
-	}])
+	}]);
 	
+	//搜索模块
+	mod.controller('searchCtrl',['$scope','$routeParams','$route',function($scope,$routeParams,$route){
+		$scope.input=''
+		$scope.searching=function(){
+			var catgory=$routeParams.catgory;
+			var q=$routeParams.q;
+			$route.updateParams({catgory:'search',q:$scope.input});
+		};
+		
+	}])
 	
 })(angular)
 

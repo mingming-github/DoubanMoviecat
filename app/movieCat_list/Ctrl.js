@@ -41,7 +41,7 @@
 		$scope.loading=true;				   //是否加载
 		
 		var catgory=$routeParams.catgory;
-		jsonpSer.jsonp('http://api.douban.com/v2/movie/'+catgory,{'start':start,'count':count},function(data){
+		jsonpSer.jsonp('http://api.douban.com/v2/movie/'+catgory,{'start':start,'count':count,'q':$routeParams.q},function(data){
 			//console.log(data);
 			
 			$scope.totalC=data.total;
@@ -68,6 +68,6 @@
 	}]);
 	
 	
-})(angular)
+})(angular);
 
 
